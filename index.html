@@ -1,167 +1,304 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Milly Freitas Nail Designer</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Montserrat', sans-serif; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Milly Freitas — Nail Designer</title>
+<meta name="description" content="Milly Freitas — Alongamento de unhas, nail art, manicure e pedicure profissional em Santa Tereza. Agende pelo WhatsApp." />
 
-    /* animações gerais */
-    .animate-fadeIn { animation: fadeIn 1.2s ease forwards; }
-    @keyframes fadeIn { 0% {opacity:0; transform: translateY(20px);} 100% {opacity:1; transform: translateY(0);} }
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-    /* Scroll reveal */
-    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
-    /* Pulse botão agendar */
-    @keyframes pulseSlow {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
-    .animate-pulse-slow { animation: pulseSlow 2s infinite; }
+<!-- Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
 
-    /* Botão voltar ao topo */
-    #topBtn { display: none; }
+<style>
+:root {
+  --primary: #ec4899;
+  --primary-dark: #db2777;
+}
 
-    /* Ajustes do carrossel */
-    #carousel-container { overflow: hidden; }
-    #carousel { display: flex; transition: transform 0.7s ease; }
-    #carousel img { flex: 0 0 100%; max-width: 100%; border-radius: 1rem; }
-  </style>
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; -webkit-font-smoothing: antialiased; padding-top: 80px; }
+
+header {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 50;
+  background-color: rgba(255,255,255,0.9);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* WhatsApp flutuante */
+.whatsapp-float {
+  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  width: 50px; height: 50px; border-radius: 50%;
+  background-color: var(--primary); display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15); z-index: 999;
+  transition: all 0.3s;
+}
+.whatsapp-float svg { width: 24px; height: 24px; fill: white; }
+.whatsapp-float:hover { background-color: white; }
+.whatsapp-float:hover svg { fill: var(--primary); }
+
+/* Hero */
+.hero { min-height: 70vh; display: grid; place-items: center; position: relative; text-align: center; }
+.hero::before {
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(236,72,153,0.75) 0%, rgba(219,39,119,0.35) 100%);
+  z-index:-1;
+}
+
+/* Sections scroll offset */
+section { scroll-margin-top: 100px; }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+</style>
 </head>
-<body class="bg-white text-gray-800 relative">
+<body class="bg-white text-slate-800">
 
-  <!-- HEADER -->
-  <header class="fixed w-full bg-white/80 backdrop-blur-md shadow-md z-50">
-    <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-      <h1 class="text-2xl font-playfair text-pink-600">Milly Freitas</h1>
-      <nav class="space-x-6 font-semibold">
-        <a href="#services" class="hover:text-pink-500 transition">Serviços</a>
-        <a href="#gallery" class="hover:text-pink-500 transition">Galeria</a>
-        <a href="#contact" class="hover:text-pink-500 transition">Contato</a>
-      </nav>
+<!-- WhatsApp flutuante -->
+<a href="https://wa.me/5551994467492" class="whatsapp-float" target="_blank" aria-label="Ligar">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/>
+  </svg>
+</a>
+
+<!-- HEADER -->
+<header class="w-full">
+  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    <div class="flex items-center gap-3">
+      <h1 class="font-playfair text-2xl text-[var(--primary)]">Milly Freitas</h1>
+      <span class="hidden md:inline text-gray-500">Nail Designer</span>
     </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="h-screen relative flex items-center justify-center reveal">
-    <div class="absolute inset-0 bg-gradient-to-b from-pink-600/60 to-pink-400/30 z-10"></div>
-    <img src="images/unha1.png" class="absolute inset-0 w-full h-full object-cover z-0">
-    <div class="relative z-20 text-center px-6 md:px-0">
-      <h2 class="text-5xl md:text-6xl font-playfair text-white font-bold mb-4 drop-shadow-lg">Beleza & Sofisticação</h2>
-      <p class="text-lg md:text-2xl text-white/90 drop-shadow-sm">Alongamentos, Nail Art e Cuidados Exclusivos</p>
-      <a href="#contact" class="mt-8 inline-block bg-gradient-to-r from-pink-600 to-pink-400 text-white font-semibold px-10 py-5 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 animate-pulse-slow transition transform">Agende seu horário</a>
-    </div>
-  </section>
-
-  <!-- SERVIÇOS -->
-  <section id="services" class="py-24 bg-gray-50">
-    <h2 class="text-4xl font-playfair text-pink-600 text-center mb-12 reveal">Nossos Serviços</h2>
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6 md:px-4">
-      <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition duration-500 reveal">
-        <h3 class="text-2xl font-semibold text-pink-600 mb-3">Alongamento de Unhas</h3>
-        <img src="unha1.png" class="rounded-xl mb-3">
-        <p class="text-gray-600">Gel, Fibra de Vidro e Tips para unhas impecáveis e duradouras.</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition duration-500 reveal">
-        <h3 class="text-2xl font-semibold text-pink-600 mb-3">Nail Art</h3>
-        <img src="unha2.png" class="rounded-xl mb-3">
-        <p class="text-gray-600">Designs criativos e personalizados para cada ocasião.</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition duration-500 reveal">
-        <h3 class="text-2xl font-semibold text-pink-600 mb-3">Manicure & Pedicure</h3>
-        <img src="unha3.png" class="rounded-xl mb-3">
-        <p class="text-gray-600">Cuidados essenciais para mãos e pés com acabamento profissional.</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition duration-500 reveal">
-        <h3 class="text-2xl font-semibold text-pink-600 mb-3">Alongamento</h3>
-        <img src="unha1.png" class="rounded-xl mb-3">
-        <p class="text-gray-600">Alongamento de Unhas.</p>
+    <nav class="hidden md:flex gap-6 font-semibold">
+      <a href="#services" class="hover:text-[var(--primary-dark)]">Serviços</a>
+      <a href="#gallery" class="hover:text-[var(--primary-dark)]">Galeria</a>
+      <a href="#testimonials" class="hover:text-[var(--primary-dark)]">Depoimentos</a>
+      <a href="#contact" class="hover:text-[var(--primary-dark)]">Contato</a>
+    </nav>
+    <div class="md:hidden">
+      <button id="mobileMenuBtn" class="p-2 rounded-md bg-white shadow" aria-label="Abrir menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="#374151" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div id="mobileMenu" class="fixed top-0 right-[-100%] w-3/4 h-full bg-white p-6 shadow-lg transition-all">
+        <a href="#services" class="block mb-4 font-semibold text-gray-700">Serviços</a>
+        <a href="#gallery" class="block mb-4 font-semibold text-gray-700">Galeria</a>
+        <a href="#testimonials" class="block mb-4 font-semibold text-gray-700">Depoimentos</a>
+        <a href="#contact" class="block mb-4 font-semibold text-gray-700">Contato</a>
       </div>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- GALERIA -->
-  <section id="gallery" class="py-24">
-    <h2 class="text-4xl font-playfair text-pink-600 text-center mb-12 reveal">Galeria</h2>
-    <div id="carousel-container" class="max-w-4xl mx-auto relative px-4 md:px-0">
-      <div id="carousel">
-        <img src="unha1.png" alt="Unha 1">
-        <img src="unha2.png" alt="Unha 2">
-        <img src="unha3.png" alt="Unha 3">
-      </div>
-      <button id="prev" class="absolute top-1/2 left-2 -translate-y-1/2 bg-pink-600 text-white px-3 py-2 rounded-full shadow-lg hover:bg-pink-700 transition">‹</button>
-      <button id="next" class="absolute top-1/2 right-2 -translate-y-1/2 bg-pink-600 text-white px-3 py-2 rounded-full shadow-lg hover:bg-pink-700 transition">›</button>
+<!-- HERO -->
+<section id="home" class="hero reveal">
+  <div class="px-6 md:px-0 max-w-3xl">
+    <h2 class="font-playfair text-white text-4xl md:text-6xl leading-tight drop-shadow-lg">Beleza & Sofisticação</h2>
+    <p class="mt-4 text-white/90 text-lg md:text-xl drop-shadow-sm">Alongamentos, Nail Art, manicure profissional — resultados que encantam.</p>
+    <div class="mt-8 flex justify-center gap-4">
+      <a href="#contact" class="bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] text-white font-semibold px-6 py-3 rounded-full">Agende pelo WhatsApp</a>
+      <a href="#gallery" class="border border-white text-white px-6 py-3 rounded-full">Ver Galeria</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTATO -->
-  <section id="contact" class="py-24 bg-gray-50 reveal text-center px-6 md:px-0">
-    <h2 class="text-4xl font-playfair text-pink-600 mb-6">Agende seu horário</h2>
-    <a href="https://wa.me/5511999999999" target="_blank" class="inline-block bg-gradient-to-r from-pink-600 to-pink-400 text-white font-semibold px-10 py-5 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 animate-pulse-slow transition transform">Agendar pelo WhatsApp</a>
-  </section>
+<!-- SERVICES -->
+<section id="services" class="py-20 bg-gray-50 reveal">
+  <div class="max-w-6xl mx-auto px-6">
+    <h3 class="text-3xl font-playfair text-[var(--primary)] text-center mb-8">Nossos Serviços</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-white p-6 rounded-2xl text-center shadow">
+        <div class="mx-auto w-14 h-14 flex items-center justify-center bg-[var(--primary)]/10 rounded-full mb-4">
+          <svg class="w-8 h-8 text-[var(--primary)]" viewBox="0 0 24 24" fill="none">
+            <path d="M4 20h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M6 16V8C6 6.34315 7.34315 5 9 5h6c1.6569 0 3 1.34315 3 3v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h4 class="font-semibold text-lg mb-2">Alongamento de Unhas</h4>
+        <p class="text-sm text-gray-600">Gel, fibra, tips — acabamento duradouro e elegante.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl text-center shadow">
+        <div class="mx-auto w-14 h-14 flex items-center justify-center bg-[var(--primary)]/10 rounded-full mb-4">
+          <svg class="w-8 h-8 text-[var(--primary)]" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12h16M4 6h16M4 18h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h4 class="font-semibold text-lg mb-2">Nail Art</h4>
+        <p class="text-sm text-gray-600">Designs personalizados para ocasiões e estilos.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl text-center shadow">
+        <div class="mx-auto w-14 h-14 flex items-center justify-center bg-[var(--primary)]/10 rounded-full mb-4">
+          <svg class="w-8 h-8 text-[var(--primary)]" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M6 12h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4 class="font-semibold text-lg mb-2">Manicure & Pedicure</h4>
+        <p class="text-sm text-gray-600">Cuidados completos com higiene e acabamento profissional.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl text-center shadow">
+        <div class="mx-auto w-14 h-14 flex items-center justify-center bg-[var(--primary)]/10 rounded-full mb-4">
+          <svg class="w-8 h-8 text-[var(--primary)]" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2c0 5-7 5-7 10s7 8 7 10 7-4 7-10-7-10-7-10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h4 class="font-semibold text-lg mb-2">Alongamento de Pestanas</h4>
+        <p class="text-sm text-gray-600">Efeito natural e duradouro com técnica profissional.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- BOTÃO VOLTAR AO TOPO -->
-  <button id="topBtn" class="fixed bottom-8 right-8 bg-pink-600 text-white p-4 rounded-full shadow-lg hover:bg-pink-700 transition z-50">↑</button>
+<!-- GALLERY -->
+<section id="gallery" class="py-16 reveal">
+  <div class="max-w-5xl mx-auto px-6">
+    <h3 class="text-3xl font-playfair text-[var(--primary)] text-center mb-6">Galeria</h3>
+    <div class="swiper gallery-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="unha1.png" alt="Unhas decoradas 1" class="mx-auto rounded-2xl shadow-lg">
+        </div>
+        <div class="swiper-slide">
+          <img src="unha2.png" alt="Unhas decoradas 2" class="mx-auto rounded-2xl shadow-lg">
+        </div>
+        <div class="swiper-slide">
+          <img src="unha3.png" alt="Unhas decoradas 3" class="mx-auto rounded-2xl shadow-lg">
+        </div>
+      </div>
+      <div class="swiper-pagination mt-4"></div>
+    </div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="bg-gray-100 py-8 text-center text-gray-600 reveal">
-    &copy; 2025 Milly Freitas Nail Designer - Todos os direitos reservados
-  </footer>
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="py-16 bg-gray-50 reveal">
+  <div class="max-w-5xl mx-auto px-6">
+    <h3 class="text-3xl font-playfair text-[var(--primary)] text-center mb-8">O que clientes dizem</h3>
+    <div class="swiper testi-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="bg-white p-6 rounded-2xl shadow-lg text-center max-w-2xl mx-auto">
+            <img src="unha1.png" alt="Cliente A" class="mx-auto rounded-full w-20 h-20 object-cover mb-4">
+            <strong>Carolina M.</strong>
+            <p class="text-sm text-gray-600 mt-2">"A Milly fez minhas unhas para o casamento — ficaram perfeitas e duraram semanas!"</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="bg-white p-6 rounded-2xl shadow-lg text-center max-w-2xl mx-auto">
+            <img src="unha2.png" alt="Cliente B" class="mx-auto rounded-full w-20 h-20 object-cover mb-4">
+            <strong>Mariana S.</strong>
+            <p class="text-sm text-gray-600 mt-2">"Sempre impecável, atendimento excelente e resultados lindos!"</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination mt-4"></div>
+    </div>
+  </div>
+</section>
 
-  <!-- SCRIPT -->
-  <script>
-    // Iniciar site no topo
-    window.scrollTo(0, 0);
+<!-- CONTACT -->
+<section id="contact" class="py-16 reveal">
+  <div class="max-w-3xl mx-auto px-6">
+    <h3 class="text-3xl font-playfair text-[var(--primary)] text-center mb-8">Agende seu horário</h3>
+    <form class="flex flex-col gap-4">
+      <input type="text" placeholder="Seu nome" class="border p-3 rounded-md">
+      <input type="tel" placeholder="Telefone ou WhatsApp" class="border p-3 rounded-md">
+      <textarea placeholder="Mensagem" class="border p-3 rounded-md"></textarea>
+      <a href="https://wa.me/555199446792" class="bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] text-white font-semibold px-6 py-3 rounded-full text-center">Enviar via WhatsApp</a>
+    </form>
+    <div class="map-container mt-8 rounded-2xl overflow-hidden shadow-lg h-80">
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.585935542739!2d-51.2242878!3d-30.07740119999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95197881b613d987%3A0x552682deeac05fd3!2sR.%20Cruzeiro%20do%20Sul%2C%202055%20-%20Santa%20Tereza%2C%20Porto%20Alegre%20-%20RS%2C%2090840-000!5e0!3m2!1spt-BR!2sbr!4v1757399753164!5m2!1spt-BR!2sbr"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
 
-    // Scroll Top
-    const topBtn = document.getElementById('topBtn');
-    window.onscroll = () => topBtn.classList.toggle('hidden', document.documentElement.scrollTop <= 300);
-    topBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+<!-- FOOTER -->
+<footer class="py-8 mt-16 bg-gray-50">
+  <div class="max-w-6xl mx-auto text-center text-gray-500 text-sm">
+    &copy; 2025 Milly Freitas — Todos os direitos reservados.
+  </div>
+</footer>
 
-    // Scroll reveal
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealOnScroll = () => {
-      const triggerBottom = window.innerHeight * 0.85;
-      revealElements.forEach((el, index) => {
-        const elTop = el.getBoundingClientRect().top;
-        if(elTop < triggerBottom) setTimeout(()=> el.classList.add('active'), index*100);
-      });
-    };
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
-    // Carrossel
-    const carousel = document.getElementById('carousel');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const totalItems = carousel.children.length;
-    let index = 0;
+<script>
+  // MOBILE MENU
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
 
-    function updateCarousel() {
-      carousel.style.transform = `translateX(-${index * 100}%)`;
+  mobileBtn.addEventListener('click', () => { 
+    mobileMenu.classList.toggle('right-0'); 
+    if (mobileMenu.classList.contains('right-0')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
     }
+  });
 
-    prevBtn.addEventListener('click', () => {
-      index = Math.max(index - 1, 0);
-      updateCarousel();
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('right-0');
+      document.body.style.overflow = '';
     });
+  });
 
-    nextBtn.addEventListener('click', () => {
-      index = Math.min(index + 1, totalItems - 1);
-      updateCarousel();
+  // REVEAL ON SCROLL
+  const reveals = document.querySelectorAll('.reveal');
+  window.addEventListener('scroll', () => {
+    reveals.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if(top < window.innerHeight - 50) el.classList.add('active');
     });
+  });
 
-    setInterval(() => {
-      index = (index + 1) % totalItems;
-      updateCarousel();
-    }, 3000);
-  </script>
+  // SWIPERS
+  const gallerySwiper = new Swiper('.gallery-swiper', {
+    loop: true,
+    autoplay: { delay: 3000, disableOnInteraction: false }, // gira a cada 3s
+    navigation: { nextEl: '.gallery-swiper .swiper-button-next', prevEl: '.gallery-swiper .swiper-button-prev' },
+    pagination: { el: '.gallery-swiper .swiper-pagination', clickable: true },
+    slidesPerView: 1, spaceBetween: 20,
+    breakpoints: { 640:{ slidesPerView:2 }, 1024:{ slidesPerView:3 } }
+  });
+
+  const testiSwiper = new Swiper('.testi-swiper', {
+    loop: true,
+    autoplay: { delay: 4000, disableOnInteraction: false }, // gira a cada 4s
+    navigation: { nextEl: '.testi-swiper .swiper-button-next', prevEl: '.testi-swiper .swiper-button-prev' },
+    pagination: { el: '.testi-swiper .swiper-pagination', clickable: true },
+    slidesPerView: 1, spaceBetween: 20
+  });
+
+  // FORMULÁRIO ENVIANDO PARA WHATSAPP
+  const contactForm = document.getElementById('contactForm');
+  if(contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const millyWhats = "5551994467492"; // número da Milly
+
+      const fullMessage = `Olá, meu nome é ${name}. Meu telefone é ${phone}. ${message}`;
+      const waUrl = `https://wa.me/${millyWhats}?text=${encodeURIComponent(fullMessage)}`;
+
+      window.open(waUrl, '_blank');
+    });
+  }
+</script>
 
 </body>
 </html>
