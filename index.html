@@ -13,16 +13,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
 <!-- Swiper CSS -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 
 <style>
 :root {
   --primary: #ec4899;
   --primary-dark: #db2777;
 }
+
+.swiper {
+  width: 100%;
+}
+
 
 html { scroll-behavior: smooth; }
 body { font-family: 'Montserrat', sans-serif; -webkit-font-smoothing: antialiased; padding-top: 80px; }
@@ -78,10 +80,10 @@ section { scroll-margin-top: 100px; }
       <span class="hidden md:inline text-gray-500">Nail Designer</span>
     </div>
     <nav class="hidden md:flex gap-6 font-semibold">
-      <a href="#services" class="hover:text-[var(--primary-dark)]">Serviços</a>
-      <a href="#gallery" class="hover:text-[var(--primary-dark)]">Galeria</a>
-      <a href="#testimonials" class="hover:text-[var(--primary-dark)]">Depoimentos</a>
-      <a href="#contact" class="hover:text-[var(--primary-dark)]">Contato</a>
+      <a href="#services" class="hover:text-[var(--primary-dark)] transition-colors duration-300">Serviços</a>
+      <a href="#gallery" class="hover:text-[var(--primary-dark)] transition-colors duration-300">Galeria</a>
+      <a href="#testimonials" class="hover:text-[var(--primary-dark)] transition-colors duration-300">Depoimentos</a>
+      <a href="#contact" class="hover:text-[var(--primary-dark)] transition-colors duration-300">Contato</a>
     </nav>
     <div class="md:hidden">
       <button id="mobileMenuBtn" class="p-2 rounded-md bg-white shadow" aria-label="Abrir menu">
@@ -105,8 +107,8 @@ section { scroll-margin-top: 100px; }
     <h2 class="font-playfair text-white text-4xl md:text-6xl leading-tight drop-shadow-lg">Beleza & Sofisticação</h2>
     <p class="mt-4 text-white/90 text-lg md:text-xl drop-shadow-sm">Alongamentos, Nail Art, manicure profissional — resultados que encantam.</p>
     <div class="mt-8 flex justify-center gap-4">
-      <a href="#contact" class="bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] text-white font-semibold px-6 py-3 rounded-full">Agende pelo WhatsApp</a>
-      <a href="#gallery" class="border border-white text-white px-6 py-3 rounded-full">Ver Galeria</a>
+      <a href="#contact" class="bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] text-white font-semibold px-6 py-3 rounded-full transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">Agende pelo WhatsApp</a>
+      <a href="#gallery" class="border border-white text-white px-6 py-3 rounded-full transform transition-transform duration-300 hover:scale-105 hover:bg-white hover:text-[var(--primary-dark)]">Ver Galeria</a>
     </div>
   </div>
 </section>
@@ -116,7 +118,9 @@ section { scroll-margin-top: 100px; }
   <div class="max-w-6xl mx-auto px-6">
     <h3 class="text-3xl font-playfair text-[var(--primary)] text-center mb-8">Nossos Serviços</h3>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="bg-white p-6 rounded-2xl text-center shadow">
+      
+      <!-- Alongamento de Unhas -->
+      <div class="bg-white p-6 rounded-2xl text-center shadow hover:shadow-xl transition-shadow duration-300">
         <div class="mx-auto w-14 h-14 flex items-center justify-center bg-[var(--primary)]/10 rounded-full mb-4">
           <svg class="w-8 h-8 text-[var(--primary)]" viewBox="0 0 24 24" fill="none">
             <path d="M4 20h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
@@ -126,7 +130,9 @@ section { scroll-margin-top: 100px; }
         <h4 class="font-semibold text-lg mb-2">Alongamento de Unhas</h4>
         <p class="text-sm text-gray-600">Gel, fibra, tips — acabamento duradouro e elegante.</p>
       </div>
-      <div class="bg-white p-6 rounded-2xl text-center shadow">
+
+      <!-- Nail Art -->
+      <div class="bg-white p-6 rounded-2xl text-center shadow hover:shadow-xl transition-shadow duration-300">
         <div class="mx-auto w-14 h-14 flex items-center justify-center bg-[var(--primary)]/10 rounded-full mb-4">
           <svg class="w-8 h-8 text-[var(--primary)]" viewBox="0 0 24 24" fill="none">
             <path d="M4 12h16M4 6h16M4 18h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -135,7 +141,9 @@ section { scroll-margin-top: 100px; }
         <h4 class="font-semibold text-lg mb-2">Nail Art</h4>
         <p class="text-sm text-gray-600">Designs personalizados para ocasiões e estilos.</p>
       </div>
-      <div class="bg-white p-6 rounded-2xl text-center shadow">
+
+      <!-- Manicure & Pedicure -->
+      <div class="bg-white p-6 rounded-2xl text-center shadow hover:shadow-xl transition-shadow duration-300">
         <div class="mx-auto w-14 h-14 flex items-center justify-center bg-[var(--primary)]/10 rounded-full mb-4">
           <svg class="w-8 h-8 text-[var(--primary)]" viewBox="0 0 24 24" fill="none">
             <path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
@@ -145,7 +153,9 @@ section { scroll-margin-top: 100px; }
         <h4 class="font-semibold text-lg mb-2">Manicure & Pedicure</h4>
         <p class="text-sm text-gray-600">Cuidados completos com higiene e acabamento profissional.</p>
       </div>
-      <div class="bg-white p-6 rounded-2xl text-center shadow">
+
+      <!-- Alongamento de Pestanas -->
+      <div class="bg-white p-6 rounded-2xl text-center shadow hover:shadow-xl transition-shadow duration-300">
         <div class="mx-auto w-14 h-14 flex items-center justify-center bg-[var(--primary)]/10 rounded-full mb-4">
           <svg class="w-8 h-8 text-[var(--primary)]" viewBox="0 0 24 24" fill="none">
             <path d="M12 2c0 5-7 5-7 10s7 8 7 10 7-4 7-10-7-10-7-10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -154,9 +164,11 @@ section { scroll-margin-top: 100px; }
         <h4 class="font-semibold text-lg mb-2">Alongamento de Pestanas</h4>
         <p class="text-sm text-gray-600">Efeito natural e duradouro com técnica profissional.</p>
       </div>
+
     </div>
   </div>
 </section>
+
 
 <!-- GALLERY -->
 <section id="gallery" class="py-16 reveal">
@@ -209,15 +221,16 @@ section { scroll-margin-top: 100px; }
 <section id="contact" class="py-16 reveal">
   <div class="max-w-3xl mx-auto px-6">
     <h3 class="text-3xl font-playfair text-[var(--primary)] text-center mb-8">Agende seu horário</h3>
-    <form class="flex flex-col gap-4">
-      <input type="text" placeholder="Seu nome" class="border p-3 rounded-md">
-      <input type="tel" placeholder="Telefone ou WhatsApp" class="border p-3 rounded-md">
-      <textarea placeholder="Mensagem" class="border p-3 rounded-md"></textarea>
-      <a href="https://wa.me/555199446792" class="bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] text-white font-semibold px-6 py-3 rounded-full text-center">Enviar via WhatsApp</a>
+    <form id="contactForm" class="flex flex-col gap-4">
+      <input id="name" type="text" placeholder="Seu nome" class="border p-3 rounded-md">
+      <input id="phone" type="tel" placeholder="Telefone ou WhatsApp" class="border p-3 rounded-md">
+      <textarea id="message" placeholder="Mensagem" class="border p-3 rounded-md"></textarea>
+      <button type="submit" class="bg-gradient-to-r from-[var(--primary)] to-[var(--primary-dark)] text-white font-semibold px-6 py-3 rounded-full text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+        Enviar via WhatsApp
+      </button>
     </form>
     <div class="map-container mt-8 rounded-2xl overflow-hidden shadow-lg h-80">
-     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.585935542739!2d-51.2242878!3d-30.07740119999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95197881b613d987%3A0x552682deeac05fd3!2sR.%20Cruzeiro%20do%20Sul%2C%202055%20-%20Santa%20Tereza%2C%20Porto%20Alegre%20-%20RS%2C%2090840-000!5e0!3m2!1spt-BR!2sbr!4v1757399753164!5m2!1spt-BR!2sbr"
-        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.585935542739!2d-51.2242878!3d-30.07740119999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95197881b613d987%3A0x552682deeac05fd3!2sR.%20Cruzeiro%20do%20Sul%2C%202055%20-%20Santa%20Tereza%2C%20Porto%20Alegre%20-%20RS%2C%2090840-000!5e0!3m2!1spt-BR!2sbr!4v1757399753164!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
@@ -236,16 +249,10 @@ section { scroll-margin-top: 100px; }
   // MOBILE MENU
   const mobileBtn = document.getElementById('mobileMenuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
-
   mobileBtn.addEventListener('click', () => { 
     mobileMenu.classList.toggle('right-0'); 
-    if (mobileMenu.classList.contains('right-0')) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = mobileMenu.classList.contains('right-0') ? 'hidden' : '';
   });
-
   document.querySelectorAll('#mobileMenu a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('right-0');
@@ -262,42 +269,39 @@ section { scroll-margin-top: 100px; }
     });
   });
 
-  // SWIPERS
-  const gallerySwiper = new Swiper('.gallery-swiper', {
-    loop: true,
-    autoplay: { delay: 3000, disableOnInteraction: false }, // gira a cada 3s
-    navigation: { nextEl: '.gallery-swiper .swiper-button-next', prevEl: '.gallery-swiper .swiper-button-prev' },
-    pagination: { el: '.gallery-swiper .swiper-pagination', clickable: true },
-    slidesPerView: 1, spaceBetween: 20,
-    breakpoints: { 640:{ slidesPerView:2 }, 1024:{ slidesPerView:3 } }
-  });
-
-  const testiSwiper = new Swiper('.testi-swiper', {
-    loop: true,
-    autoplay: { delay: 4000, disableOnInteraction: false }, // gira a cada 4s
-    navigation: { nextEl: '.testi-swiper .swiper-button-next', prevEl: '.testi-swiper .swiper-button-prev' },
-    pagination: { el: '.testi-swiper .swiper-pagination', clickable: true },
-    slidesPerView: 1, spaceBetween: 20
-  });
-
-  // FORMULÁRIO ENVIANDO PARA WHATSAPP
-  const contactForm = document.getElementById('contactForm');
-  if(contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      const millyWhats = "5551994467492"; // número da Milly
-
-      const fullMessage = `Olá, meu nome é ${name}. Meu telefone é ${phone}. ${message}`;
-      const waUrl = `https://wa.me/${millyWhats}?text=${encodeURIComponent(fullMessage)}`;
-
-      window.open(waUrl, '_blank');
-    });
+new Swiper('.gallery-swiper', {
+  loop: true,
+  autoplay: { delay: 3000, disableOnInteraction: false },
+  pagination: { el: '.gallery-swiper .swiper-pagination', clickable: true },
+  slidesPerView: 1, // default mobile
+  spaceBetween: 20,
+  breakpoints: { 
+    640:{ slidesPerView:2 },   // tablet
+    1024:{ slidesPerView:3 }   // desktop
   }
+});
+
+
+new Swiper('.testi-swiper', {
+  loop: true,
+  autoplay: { delay: 4000, disableOnInteraction: false },
+  pagination: { el: '.testi-swiper .swiper-pagination', clickable: true },
+  slidesPerView: 1,
+  spaceBetween: 20
+});
+
+  // FORMULÁRIO WHATSAPP
+  const contactForm = document.getElementById('contactForm');
+  contactForm?.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const millyWhats = "5551994467492";
+    const fullMessage = `Olá, meu nome é ${name}. Meu telefone é ${phone}. ${message}`;
+    const waUrl = `https://wa.me/${millyWhats}?text=${encodeURIComponent(fullMessage)}`;
+    window.open(waUrl, '_blank');
+  });
 </script>
 
 </body>
