@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milly Freitas Nail Designer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; }
+
+    /* animações gerais */
+    .animate-fadeIn { animation: fadeIn 1.2s ease forwards; }
+    @keyframes fadeIn { 0% {opacity:0; transform: translateY(20px);} 100% {opacity:1; transform: translateY(0);} }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Pulse botão agendar */
+    @keyframes pulseSlow {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    .animate-pulse-slow { animation: pulseSlow 2s infinite; }
+
+    /* Botão voltar ao topo */
+    #topBtn { display: none; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 relative">
+
+  <!-- HEADER -->
+  <header class="fixed w-full bg-white/80 backdrop-blur-md shadow-md z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-playfair text-pink-600">Milly Freitas</h1>
+      <nav class="space-x-6 font-semibold">
+        <a href="#services" class="hover:text-pink-500 transition">Serviços</a>
+        <a href="#gallery" class="hover:text-pink-500 transition">Galeria</a>
+        <a href="#contact" class="hover:text-pink-500 transition">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="h-screen relative flex items-center justify-center reveal">
+    <div class="absolute inset-0 bg-gradient-to-b from-pink-600/60 to-pink-400/30 z-10"></div>
+    <img src="images/unha1.png" class="absolute inset-0 w-full h-full object-cover z-0">
+    <div class="relative z-20 text-center px-4">
+      <h2 class="text-5xl md:text-6xl font-playfair text-white font-bold mb-4 drop-shadow-lg">Beleza & Sofisticação</h2>
+      <p class="text-lg md:text-2xl text-white/90 drop-shadow-sm">Alongamentos, Nail Art e Cuidados Exclusivos</p>
+      <a href="#contact" class="mt-8 inline-block bg-gradient-to-r from-pink-600 to-pink-400 text-white font-semibold px-10 py-5 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 animate-pulse-slow transition transform">Agende seu horário</a>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="services" class="py-24 bg-gray-50">
+    <h2 class="text-4xl font-playfair text-pink-600 text-center mb-12 reveal">Nossos Serviços</h2>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+      <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition duration-500 reveal">
+        <h3 class="text-2xl font-semibold text-pink-600 mb-3">Alongamento de Unhas</h3>
+        <img src="unha1.png" class="rounded-xl mb-3">
+        <p class="text-gray-600">Gel, Fibra de Vidro e Tips para unhas impecáveis e duradouras.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition duration-500 reveal">
+        <h3 class="text-2xl font-semibold text-pink-600 mb-3">Nail Art</h3>
+        <img src="unha2.png" class="rounded-xl mb-3">
+        <p class="text-gray-600">Designs criativos e personalizados para cada ocasião.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition duration-500 reveal">
+        <h3 class="text-2xl font-semibold text-pink-600 mb-3">Manicure & Pedicure</h3>
+        <img src="unha3.png" class="rounded-xl mb-3">
+        <p class="text-gray-600">Cuidados essenciais para mãos e pés com acabamento profissional.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition duration-500 reveal">
+        <h3 class="text-2xl font-semibold text-pink-600 mb-3">Extensão de Pestanas</h3>
+        <img src="unha1.png" class="rounded-xl mb-3">
+        <p class="text-gray-600">Alongamento de cílios com efeito natural e elegante.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section id="gallery" class="py-24">
+    <h2 class="text-4xl font-playfair text-pink-600 text-center mb-12 reveal">Galeria</h2>
+    <div class="max-w-4xl mx-auto overflow-hidden relative">
+      <div id="carousel" class="flex transition-transform duration-700">
+        <img src="unha1.png" class="w-full flex-shrink-0 rounded-2xl shadow-lg mx-2">
+        <img src="unha2.png" class="w-full flex-shrink-0 rounded-2xl shadow-lg mx-2">
+        <img src="unha3.png" class="w-full flex-shrink-0 rounded-2xl shadow-lg mx-2">
+      </div>
+      <button id="prev" class="absolute top-1/2 left-2 -translate-y-1/2 bg-pink-600 text-white px-3 py-2 rounded-full shadow-lg hover:bg-pink-700 transition">‹</button>
+      <button id="next" class="absolute top-1/2 right-2 -translate-y-1/2 bg-pink-600 text-white px-3 py-2 rounded-full shadow-lg hover:bg-pink-700 transition">›</button>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contact" class="py-24 bg-gray-50 reveal text-center">
+    <h2 class="text-4xl font-playfair text-pink-600 mb-6">Agende seu horário</h2>
+    <a href="https://wa.me/5511999999999" target="_blank" class="inline-block bg-gradient-to-r from-pink-600 to-pink-400 text-white font-semibold px-10 py-5 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 animate-pulse-slow transition transform">Agendar pelo WhatsApp</a>
+  </section>
+
+  <!-- BOTÃO VOLTAR AO TOPO -->
+  <button id="topBtn" class="fixed bottom-8 right-8 bg-pink-600 text-white p-4 rounded-full shadow-lg hover:bg-pink-700 transition z-50">↑</button>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-100 py-8 text-center text-gray-600 reveal">
+    &copy; 2025 Milly Freitas Nail Designer - Todos os direitos reservados
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Iniciar site no topo
+    window.scrollTo(0, 0);
+
+    // Scroll Top
+    const topBtn = document.getElementById('topBtn');
+    window.onscroll = () => topBtn.classList.toggle('hidden', document.documentElement.scrollTop <= 300);
+    topBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      revealElements.forEach((el, index) => {
+        const elTop = el.getBoundingClientRect().top;
+        if(elTop < triggerBottom) setTimeout(()=> el.classList.add('active'), index*100);
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // Carrossel
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const totalItems = carousel.children.length;
+    let index = 0;
+
+    function updateCarousel() {
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      index = Math.max(index - 1, 0);
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      index = Math.min(index + 1, totalItems - 1);
+      updateCarousel();
+    });
+
+    setInterval(() => {
+      index = (index + 1) % totalItems;
+      updateCarousel();
+    }, 3000);
+  </script>
+
+</body>
+</html>
